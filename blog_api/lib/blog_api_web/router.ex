@@ -22,6 +22,8 @@ defmodule BlogApiWeb.Router do
     scope "/" do
       pipe_through [:fetch_session, :protect_from_forgery]
       live_dashboard "/dashboard", metrics: BlogApiWeb.Telemetry
+      resources "/books", BookController, except: [:new, :edit]
+
     end
   end
 end
